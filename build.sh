@@ -12,6 +12,7 @@ PROFILE="generic"
 PACKAGES=""
 
 # 主题
+PACKAGES="$PACKAGES -dnsmasq dnsmasq-full"
 PACKAGES="$PACKAGES luci-proto-mbim"
 PACKAGES="$PACKAGES luci-proto-qmi"
 PACKAGES="$PACKAGES luci-proto-modemmanager"
