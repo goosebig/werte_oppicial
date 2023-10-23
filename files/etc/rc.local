@@ -1,0 +1,6 @@
+# Put your custom commands here that should be executed once
+# the system init finished. By default this file does nothing.
+
+# s8 di lock di usb0
+#dokodok mac usb0 usb1 02:50:52:59:6D:32
+exit 0

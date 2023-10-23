@@ -1,0 +1,9 @@
+<%+header%>
+<div class="cbi-map">
+<br>
+<iframe id="adgstat" style="width: 100%; min-height: 600px; border: none; border-radius: 3px;"></iframe>
+</div>
+<script type="text/javascript">
+document.getElementById("adgstat").src = "http://" + window.location.hostname + ":3000";
+</script>
+<%+footer%>
