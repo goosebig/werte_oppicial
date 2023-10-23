@@ -117,6 +117,7 @@ echo '*/5 * * * * /www/netmon/vnstati.sh >/dev/null 2>&1' >> /etc/crontabs/root
 
 /etc/init.d/samba4 restart
 rm -rf /usr/lib/lua/luci/i18n
+rm -rf /etc/uci-defaults/luci-i18n*
 
 #metacubexd
 #tar -xzf /etc/openclash/compressed-dist.tgz -C /usr/share/openclash/ui/dashboard && rm /etc/openclash/compressed-dist.tgz
