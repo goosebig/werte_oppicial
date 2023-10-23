@@ -120,7 +120,7 @@ PACKAGES="$PACKAGES -luci-i18n-base-zh-cn -default-settings-chn"
 
 # collectd 统计
 PACKAGES="$PACKAGES luci-app-argon-config"
-#PACKAGES="$PACKAGES luci-app-design-config" 
+PACKAGES="$PACKAGES collectd-mod-sensors lm-sensors lm-sensors-detect" 
 
 
 # OpenClash 代理

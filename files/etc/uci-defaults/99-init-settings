@@ -50,10 +50,10 @@ uci set network.m_eth1.proto='dhcp'
 uci set network.m_eth1.device='eth1'
 uci set network.m_eth1.metric='3000'
 
-uci set network.m_eth2=interface
-uci set network.m_eth2.proto='dhcp'
-uci set network.m_eth2.device='eth2'
-uci set network.m_eth2.metric='4000'
+#uci set network.m_eth2=interface
+#uci set network.m_eth2.proto='dhcp'
+#uci set network.m_eth2.device='eth2'
+#uci set network.m_eth2.metric='4000'
 
 #uci set network.utun=interface
 #uci set network.utun.proto='none'
@@ -65,7 +65,7 @@ uci commit network
 uci add_list firewall.@zone[1].network='m_usb0'
 uci add_list firewall.@zone[1].network='m_usb1'
 uci add_list firewall.@zone[1].network='m_eth1'
-uci add_list firewall.@zone[1].network='m_eth2'
+#uci add_list firewall.@zone[1].network='m_eth2'
 uci set firewall.@defaults[0].input='ACCEPT'
 uci commit firewall
 
@@ -122,6 +122,7 @@ rm -rf /etc/uci-defaults/luci-i18n*
 #metacubexd
 #tar -xzf /etc/openclash/compressed-dist.tgz -C /usr/share/openclash/ui/dashboard && rm /etc/openclash/compressed-dist.tgz
 
+chmod +x /sbin/cpuinfo
 chmod +x /lib/preinit/80_mount_root
 
 # remove huawei me909s usb-modeswitch
