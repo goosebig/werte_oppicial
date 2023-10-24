@@ -18,6 +18,8 @@ PACKAGES="$PACKAGES luci-proto-mbim"
 PACKAGES="$PACKAGES luci-proto-qmi"
 PACKAGES="$PACKAGES luci-proto-modemmanager"
 
+PACKAGES="$PACKAGES internet-detector luci-app-internet-detector"
+
 PACKAGES="$PACKAGES -dnsmasq dnsmasq-full cgi-io libiwinfo libiwinfo-data libiwinfo-lua liblua block-mount mount-utils"
 PACKAGES="$PACKAGES liblucihttp liblucihttp-lua libubus-lua lua luci luci-app-firewall luci-app-opkg"
 PACKAGES="$PACKAGES luci-base luci-lib-base luci-lib-ip luci-lib-jsonc luci-lib-nixio luci-mod-admin-full"
