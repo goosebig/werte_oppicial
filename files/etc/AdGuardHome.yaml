@@ -31,7 +31,7 @@ dns:
     - 2620:fe::10
     - 2620:fe::fe:10
   fallback_dns: []
-  all_servers: false
+  all_servers: true
   fastest_addr: false
   fastest_timeout: 1s
   allowed_clients: []
@@ -84,7 +84,7 @@ tls:
   strict_sni_check: false
 querylog:
   ignored: []
-  interval: 6h
+  interval: 168h
   size_memory: 1000
   enabled: true
   file_enabled: true
