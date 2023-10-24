@@ -30,7 +30,7 @@ PACKAGES="$PACKAGES kmod-nls-utf8 kmod-usb-serial-option kmod-usb-serial-sierraw
 PACKAGES="$PACKAGES kmod-usb-net-ipheth kmod-usb-net-cdc-mbim usbmuxd libusbmuxd-utils libimobiledevice-utils"
 PACKAGES="$PACKAGES kmod-usb-storage kmod-usb-storage-uas ksmbd-server"
 
-PACKAGES="$PACKAGES luci-app-openclash luci-app-cloudflared luci-app-lite-watchdog"
+PACKAGES="$PACKAGES luci-app-openclash luci-app-cloudflared"
 PACKAGES="$PACKAGES luci-app-diskman luci-app-hd-idle luci-app-samba4"
 PACKAGES="$PACKAGES luci-theme-material luci-theme-argon luci-theme-design luci-app-poweroff"
 PACKAGES="$PACKAGES luci-app-ramfree luci-app-ttyd openssh-sftp-server adb"
