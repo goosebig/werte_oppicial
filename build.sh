@@ -12,7 +12,7 @@ PROFILE="generic"
 PACKAGES=""
 
 # 主题
-PACKAGES="$PACKAGES autocore luci-mod-status"
+PACKAGES="$PACKAGES luci-mod-status autocore"
 PACKAGES="$PACKAGES -dnsmasq dnsmasq-full"
 PACKAGES="$PACKAGES luci-proto-mbim"
 PACKAGES="$PACKAGES luci-proto-qmi"
