@@ -1,6 +1,6 @@
 
 config system
-	option hostname 'ImmortalWrt'
+	option hostname 'AldevWrt'
 	option timezone 'WIB-7'
 	option ttylogin '0'
 	option log_size '6400'
