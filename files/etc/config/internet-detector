@@ -15,7 +15,6 @@ config ui 'ui'
 
 config instance 'Internet'
 	option check_type '1'
-	option iface 'usb0'
 	option interval_up '30'
 	option interval_down '5'
 	option connection_attempts '2'
