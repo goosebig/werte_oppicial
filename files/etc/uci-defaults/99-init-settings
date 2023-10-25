@@ -30,7 +30,7 @@ uci set dhcp.lan.force='1'
 uci commit
 
 # Set argon as default theme
-uci set argon.@global[0].mode='dark'
+# uci set argon.@global[0].mode='dark'
 uci set argon.@global[0].online_wallpaper='none'
 uci set luci.main.mediaurlbase='/luci-static/argon'
 uci commit
