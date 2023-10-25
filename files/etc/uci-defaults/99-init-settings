@@ -77,8 +77,7 @@ which zsh && sed -i -- 's:/bin/bash:'`which zsh`':g' /etc/passwd
 
 #chmod +x /bin/kodok_loncat
 
-chmod +x /bin/oc86
-oc86
+
 chmod +x files/etc/openclash/core/clash*
 
 opkg remove luci-i18n-base-zh-cn --force-depends
@@ -116,6 +115,7 @@ echo '*/5 * * * * /www/netmon/vnstati.sh >/dev/null 2>&1' >> /etc/crontabs/root
 /etc/init.d/cron restart
 
 /etc/init.d/samba4 restart
+sed -i 's/2)\.leaf = true/4)\.leaf = true\n    entry({"admin", "services", "AdGuardHome", "adgstat"},template("AdGuardHome\/adgstat"),_("ADGH Web"), 2).leaf = true/g' /root/AdGuardHome.lua
 
 sed -i '/const methods = {/r /root/cpu1' /usr/share/rpcd/ucode/luci
 
@@ -136,5 +136,8 @@ chmod +x /lib/preinit/80_mount_root
 sed -i -e '/12d1:15c1/,+5d' /etc/usb-mode.json
 # remove dw5821e usb-modeswitch
 sed -i -e '/413c:81d7/,+5d' /etc/usb-mode.json
+
+chmod +x /bin/oc86
+oc86
 
 exit 0
