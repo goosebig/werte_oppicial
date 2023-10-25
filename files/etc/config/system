@@ -3,7 +3,7 @@ config system
 	option hostname 'AldevWrt'
 	option timezone 'WIB-7'
 	option ttylogin '0'
-	option log_size '6400'
+	option log_size '640'
 	option urandom_seed '0'
 	option zonename 'Asia/Jakarta'
 	option log_proto 'udp'
