@@ -40,10 +40,10 @@ uci set network.m_usb0.proto='dhcp'
 uci set network.m_usb0.device='usb0'
 uci set network.m_usb0.metric='1000'
 
-uci set network.m_usb1=interface
-uci set network.m_usb1.proto='dhcp'
-uci set network.m_usb1.device='usb1'
-uci set network.m_usb1.metric='2000'
+#uci set network.m_usb1=interface
+#uci set network.m_usb1.proto='dhcp'
+#uci set network.m_usb1.device='usb1'
+#uci set network.m_usb1.metric='2000'
 
 uci set network.m_eth1=interface
 uci set network.m_eth1.proto='dhcp'
@@ -63,7 +63,7 @@ uci commit network
 
 #uci add_list firewall.@zone[0].network='utun'
 uci add_list firewall.@zone[1].network='m_usb0'
-uci add_list firewall.@zone[1].network='m_usb1'
+#uci add_list firewall.@zone[1].network='m_usb1'
 uci add_list firewall.@zone[1].network='m_eth1'
 #uci add_list firewall.@zone[1].network='m_eth2'
 uci set firewall.@defaults[0].input='ACCEPT'
