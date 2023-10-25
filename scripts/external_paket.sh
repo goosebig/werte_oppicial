@@ -12,9 +12,9 @@ github_reponame="cloudflare/cloudflared"
 path_binary="$PWD/packages/luci-app-openclash_new.ipk"
 
 
-latest_ver=$(curl -s https://raw.githubusercontent.com/vernesong/OpenClash/package/master/version | head -n1 | sed "s/^v//g")
+latest_ver=$(curl -s https://raw.githubusercontent.com/vernesong/OpenClash/package/dev/version | head -n1 | sed "s/^v//g")
 echo ${latest_ver}
-wget -qO ${path_binary} --show-progress "https://raw.githubusercontent.com/vernesong/OpenClash/package/master/luci-app-openclash_${latest_ver}_all.ipk"
+wget -qO ${path_binary} --show-progress "https://raw.githubusercontent.com/vernesong/OpenClash/package/dev/luci-app-openclash_${latest_ver}_all.ipk"
 
 #wget -qO- "https://github.com/cloudflare/cloudflared/releases/download/2023.8.0/cloudflared-linux-arm64" > $PWD/files/usr/bin/cloudflared
 
