@@ -131,6 +131,19 @@ sed -i -e '/413c:81d7/,+5d' /etc/usb-mode.json
 chmod +x /bin/oc86
 oc86
 
+cat << 'EOF' > /usr/lib/lua/luci/view/AdGuardHome/adgstat.htm
+<%+header%>
+<div class="cbi-map">
+<br>
+<iframe id="adgstat" style="width: 100%; min-height: 600px; border: none; border-radius: 3px;"></iframe>
+</div>
+<script type="text/javascript">
+document.getElementById("adgstat").src = "http://" + window.location.hostname + ":3000";
+</script>
+<%+footer%>
+EOF
+
+
 sed -i 's/2)\.leaf = true/4)\.leaf = true\n    entry({"admin", "services", "AdGuardHome", "adgstat"},template("AdGuardHome\/adgstat"),_("ADGH Web"), 2).leaf = true/g' /usr/lib/lua/luci/controller/AdGuardHome.lua
 
 sed -i '/const methods = {/r /root/cpu1' /usr/share/rpcd/ucode/luci
