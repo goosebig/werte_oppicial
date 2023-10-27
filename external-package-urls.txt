@@ -1,2 +1,1 @@
 https://github.com/gngpp/luci-theme-design/releases/download/v6.0-20230224-dev/luci-theme-design_6.0-20230224_all.ipk
-https://op.dllkids.xyz/packages/x86_64/luci-app-adguardhome_git-24.299.56360-538f61b_all.ipk
