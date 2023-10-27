@@ -165,6 +165,7 @@ rm -rf /root/cpu1
 
 rm -rf /usr/lib/lua/luci/i18n
 rm -rf /etc/uci-defaults/luci-i18n*
+rm -rf /etc/hotplug.d/iface/20-firewall
 
 /etc/init.d/rpcd restart
 
