@@ -15,23 +15,20 @@ theme: dark
 dns:
   bind_hosts:
     - 0.0.0.0
-  port: 5553
+  port: 1745
   anonymize_client_ip: false
   ratelimit: 0
   ratelimit_whitelist: []
   refuse_any: false
   upstream_dns:
-    - https://dns.adguard-dns.com/dns-query
-    - https://dns.google/dns-query
-    - https://dns.cloudflare.com/dns-query
+    - 8.8.8.8
+    - 8.8.4.4
   upstream_dns_file: ""
   bootstrap_dns:
-    - 9.9.9.10
-    - 149.112.112.10
-    - 2620:fe::10
-    - 2620:fe::fe:10
+    - 119.29.29.29
+    - 223.5.5.5
   fallback_dns: []
-  all_servers: false
+  all_servers: true
   fastest_addr: false
   fastest_timeout: 1s
   allowed_clients: []
@@ -94,35 +91,23 @@ statistics:
   enabled: true
 filters:
   - enabled: true
-    url: https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_1.txt
     name: AdGuard DNS filter
-    id: 1228750870
+    id: 1698401970
   - enabled: true
-    url: https://adaway.org/hosts.txt
-    name: Adaway HOST
-    id: 139789187
-  - enabled: true
-    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_33.txt
-    name: Steven Black's List
-    id: 1696893557
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_2.txt
+    name: AdAway Default Blocklist
+    id: 1698401971
   - enabled: true
     url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_27.txt
     name: OISD Blocklist Big
-    id: 1696893558
+    id: 1698401972
   - enabled: true
     url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_22.txt
     name: 'IDN: ABPindo'
-    id: 1696893559
+    id: 1698401973
 whitelist_filters: []
-user_rules:
-  - '@@||googlesyndication.com^'
-  - '@@||ebuckler.com^'
-  - '@@||mixpanel.com^'
-  - '@@||split.io^'
-  - '@@||s.youtube.com^'
-  - '||*.newrelic.com^'
-  - '||*.branch.io^'
-  - '||*.histats.com^'
+user_rules: []
 dhcp:
   enabled: false
   interface_name: ""
@@ -165,7 +150,7 @@ filtering:
   parental_cache_size: 1048576
   cache_time: 30
   filters_update_interval: 24
-  blocked_response_ttl: 10
+  blocked_response_ttl: 60
   filtering_enabled: true
   parental_enabled: false
   safebrowsing_enabled: false
