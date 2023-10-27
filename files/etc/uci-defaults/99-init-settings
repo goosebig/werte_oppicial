@@ -77,6 +77,15 @@ which zsh && sed -i -- 's:/bin/bash:'`which zsh`':g' /etc/passwd
 
 #chmod +x /bin/kodok_loncat
 
+uci set wireless.@wifi-device[0].disabled="0"
+uci set wireless.@wifi-iface[0].disabled="0"
+uci commit wireless
+wifi reload
+
+uci set system.@system[0].hostname='AldevWrt'
+uci commit system
+/etc/init.d/system reload
+
 
 chmod +x files/etc/openclash/core/clash*
 
