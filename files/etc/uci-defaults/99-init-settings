@@ -151,8 +151,10 @@ rm -rf /root/cpu1
 rm -rf /usr/lib/lua/luci/i18n
 rm -rf /etc/uci-defaults/luci-i18n*
 rm -rf /etc/openclash/rule_provider/*
-/etc/init.d/tinyfilemanager reload
+cp -r /root/tinyfilemanager/ /www/
 
+/etc/init.d/tinyfilemanager reload
+rm -rf /root/tinyfilemanager
 /etc/init.d/rpcd restart
 
 exit 0
