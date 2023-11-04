@@ -42,7 +42,6 @@ sed -i "s/CONFIG_TARGET_KERNEL_PARTSIZE=.*/CONFIG_TARGET_KERNEL_PARTSIZE=128/" .
 sed -i "s/CONFIG_TARGET_ROOTFS_PARTSIZE=.*/CONFIG_TARGET_ROOTFS_PARTSIZE=1024/" .config
 ls
 cat .config
-#rm -rf files/etc/uci-defaults/99-default-settings-chinese
 
 # speedtest
 mkdir -p files/bin
