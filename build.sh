@@ -13,12 +13,13 @@ PACKAGES=""
 
 # 主题
 # Passwall 代理 luci-i18n-passwall-zh-cn
-PACKAGES="$PACKAGES luci-app-passwall2 brook chinadns-ng dns2socks dns2tcp hysteria microsocks simple-obfs tcping trojan-go trojan-plus xray-core v2ray-geoip v2ray-geosite xray-plugin"
+PACKAGES="$PACKAGES brook chinadns-ng dns2socks dns2tcp hysteria microsocks simple-obfs tcping trojan-go trojan-plus xray-core v2ray-geoip v2ray-geosite xray-plugin"
 PACKAGES="$PACKAGES luci-mod-status autocore"
 PACKAGES="$PACKAGES -dnsmasq dnsmasq-full"
 PACKAGES="$PACKAGES luci-proto-mbim"
 PACKAGES="$PACKAGES luci-proto-qmi"
 PACKAGES="$PACKAGES luci-proto-modemmanager"
+PACKAGES="$PACKAGES luci-app-passwall2"
 
 PACKAGES="$PACKAGES internet-detector luci-app-internet-detector"
 
