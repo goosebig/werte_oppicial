@@ -1,9 +1,13 @@
 name: Download and Save File
 
 on:
-  push:
-    branches:
-      - main
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  #  inputs:
+  #    release: 
+  #      description: 将编译出的镜像上传到 Release
+ #       required: true
+  #      default: 'true'
 
 jobs:
   download-and-upload:
@@ -12,7 +16,7 @@ jobs:
       - name: Checkout source repository
         uses: actions/checkout@v2
         with:
-          repository: zero2black/source-repository # Replace with the source repository URL
+          repository: zero2black/werte_oppicial # Replace with the source repository URL
           ref: main # Replace with the branch or tag name
 
       - name: Download file from source repository
