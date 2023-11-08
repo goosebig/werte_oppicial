@@ -15,13 +15,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
-      - name: Download Packages Manifest
-        run: |
-          wget -O abc.txt https://opkg.cooluc.com/openwrt-23.05/x86_64/Packages.manifest
-          grep -o 'Filename: [^ ]*' abc.txt |  awk '{print "https://opkg.cooluc.com/openwrt-23.05/x86_64/" $2}' > external-package-urls.txt
-        shell: bash
-
+        
       - name: Remove file
         run: |
             git config --local user.email "action@github.com"
@@ -31,6 +25,14 @@ jobs:
             git commit -m "Remove abc.txt"
             git push
 
+
+      - name: Download Packages Manifest
+        run: |
+          wget -O abc.txt https://opkg.cooluc.com/openwrt-23.05/x86_64/Packages.manifest
+          grep -o 'Filename: [^ ]*' abc.txt |  awk '{print "https://opkg.cooluc.com/openwrt-23.05/x86_64/" $2}' > external-package-urls.txt
+        shell: bash
+
+      
       - name: Commit and Push Changes
         run: |
           git config --local user.email "action@github.com"
