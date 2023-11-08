@@ -24,6 +24,8 @@ jobs:
 
       - name: Remove file
         run: |
+            git config --local user.email "action@github.com"
+            git config --local user.name "GitHub Action"
             rm -f abc.txt
             git add -A
             git commit -m "Remove abc.txt"
