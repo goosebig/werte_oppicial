@@ -27,6 +27,6 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add abc.txt
-          git add external-package-urls.txt.txt
+          git add external-package-urls.txt
           git commit -m "Add Packages Manifest"
           git push https://${{ secrets.GITHUB_TOKEN }}@github.com/zero2black/werte_oppicial.git HEAD:main
