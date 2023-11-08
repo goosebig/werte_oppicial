@@ -21,9 +21,6 @@ jobs:
           wget -O abc.txt https://opkg.cooluc.com/openwrt-23.05/x86_64/Packages.manifest
           grep -o 'Filename: [^ ]*' abc.txt |  awk '{print "https://opkg.cooluc.com/openwrt-23.05/x86_64/" $2}' > external-package-urls.txt
         shell: bash
-        
-      - name: Overwrite abc.txt in the repository
-        run: mv external-package-urls.txt $GITHUB_WORKSPACE/external-package-urls.txt
 
       - name: Commit and Push Changes
         run: |
