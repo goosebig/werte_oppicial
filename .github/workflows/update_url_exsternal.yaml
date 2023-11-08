@@ -21,6 +21,7 @@ jobs:
           wget -O abc.txt https://opkg.cooluc.com/openwrt-23.05/x86_64/Packages.manifest
           grep -o 'Filename: [^ ]*' abc.txt |  awk '{print "https://opkg.cooluc.com/openwrt-23.05/x86_64/" $2}' > external-package-urls.txt
         shell: bash
+        working-directory: ${{ github.workspace }}
 
       - name: Commit and Push Changes
         run: |
@@ -30,3 +31,4 @@ jobs:
           git add external-package-urls.txt
           git commit -m "Add Packages Manifest"
           git push https://${{ secrets.GITHUB_TOKEN }}@github.com/zero2black/werte_oppicial.git main
+        working-directory: ${{ github.workspace }}
