@@ -104,7 +104,7 @@ PACKAGES="$PACKAGES luci-app-openclash"
 PACKAGES="$PACKAGES adguardhome luci-app-adguardhome"
 #PACKAGES="$PACKAGES luci-app-adblock"
 
-PACKAGES="$PACKAGES luci-theme-material luci-theme-argon luci-theme-design luci-app-poweroff"
+PACKAGES="$PACKAGES luci-theme-material luci-theme-argon luci-app-poweroff"
 PACKAGES="$PACKAGES luci-app-ramfree luci-app-ttyd openssh-sftp-server adb"
 PACKAGES="$PACKAGES usbutils pciutils htop irqbalance"
 #PACKAGES="$PACKAGES kmod-nft-tproxy kmod-inet-diag ip6tables-mod-nat iptables-mod-extra iptables-mod-tproxy kmod-ipt-nat ruby ruby-yaml kmod-tun"
