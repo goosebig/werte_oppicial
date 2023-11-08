@@ -1,0 +1,43 @@
+name: Download and Save File
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  download-and-upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source repository
+        uses: actions/checkout@v2
+        with:
+          repository: zero2black/source-repository # Replace with the source repository URL
+          ref: main # Replace with the branch or tag name
+
+      - name: Download file from source repository
+        run: |
+          # Run any command to download the file, for example, using curl or wget
+          curl -LO https://opkg.cooluc.com/openwrt-23.05/x86_64/Packages
+
+      - name: Upload file as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: downloaded-file
+          path: file.txt
+
+      - name: Checkout destination repository
+        uses: actions/checkout@v2
+        with:
+          repository: zero2black/werte_oppicial # Replace with the destination repository URL
+          ref: main # Replace with the branch or tag name
+
+      - name: Download artifact and save to destination repository
+        run: |
+          # Download the artifact from the previous job
+          wget https://github.com/${{ github.repository }}/actions/artifacts/download/downloaded-file -O file.txt
+
+          # Commit and push the file to the destination repository
+          git add file.txt
+          git commit -m "Add downloaded file"
+          git push
