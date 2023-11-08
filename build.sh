@@ -34,7 +34,7 @@ PACKAGES="$PACKAGES kmod-usb-storage kmod-usb-storage-uas ksmbd-server"
 
 PACKAGES="$PACKAGES luci-app-openclash luci-app-cloudflared"
 PACKAGES="$PACKAGES luci-app-diskman luci-app-hd-idle luci-app-samba4"
-PACKAGES="$PACKAGES luci-theme-material luci-theme-argon luci-theme-design luci-app-poweroff"
+PACKAGES="$PACKAGES luci-theme-material luci-theme-argon luci-app-poweroff"
 PACKAGES="$PACKAGES luci-app-ramfree luci-app-ttyd openssh-sftp-server adb"
 PACKAGES="$PACKAGES usbutils pciutils htop"
 #PACKAGES="$PACKAGES kmod-nft-tproxy kmod-inet-diag ip6tables-mod-nat iptables-mod-extra iptables-mod-tproxy kmod-ipt-nat ruby ruby-yaml kmod-tun"
