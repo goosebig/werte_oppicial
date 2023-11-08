@@ -20,6 +20,7 @@ jobs:
         run: |
             git config --local user.email "action@github.com"
             git config --local user.name "GitHub Action"
+            rm -f external-package-urls.txt
             rm -f abc.txt
             git add -A
             git commit -m "Remove abc.txt"
@@ -38,5 +39,6 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add abc.txt
+          git add external-package-urls.txt
           git commit -m "Add Packages Manifest"
           git push https://${{ secrets.GITHUB_TOKEN }}@github.com/zero2black/werte_oppicial.git main
