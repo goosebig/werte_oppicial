@@ -19,7 +19,7 @@ jobs:
       - name: Download Packages Manifest
         run: |
           wget -O abc.txt https://opkg.cooluc.com/openwrt-23.05/x86_64/Packages.manifest
-          grep -o 'Filename: [^ ]*' abc.txt |  awk '{print "https://opkg.cooluc.com/openwrt-23.05/x86_64/" $2}' > external-package-urls.txt.txt
+          grep -o 'Filename: [^ ]*' abc.txt |  awk '{print "https://opkg.cooluc.com/openwrt-23.05/x86_64/" $2}' > external-package-urls.txt
         shell: bash
 
       - name: Commit and Push Changes
