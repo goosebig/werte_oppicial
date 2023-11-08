@@ -130,7 +130,7 @@ PACKAGES="$PACKAGES collectd-mod-sensors lm-sensors lm-sensors-detect"
 #PACKAGES="$PACKAGES kmod-nf-ipt kmod-ipt-core kmod-ipt-ipset libipset13 ipset"
 #PACKAGES="$PACKAGES luci-app-openclash"
 # Passwall 代理 luci-i18n-passwall-zh-cn
-#PACKAGES="$PACKAGES brook chinadns-ng dns2socks dns2tcp hysteria microsocks simple-obfs tcping trojan-go trojan-plus xray-core v2ray-geoip v2ray-geosite xray-plugin luci-i18n-passwall-zh-cn"
+PACKAGES="$PACKAGES luci-app-passwall luci-app-passwall2 brook chinadns-ng dns2socks dns2tcp hysteria microsocks simple-obfs tcping trojan-go trojan-plus xray-core v2ray-geoip v2ray-geosite xray-plugin"
 
 # 常用的网络存储组件
 # 文件助手

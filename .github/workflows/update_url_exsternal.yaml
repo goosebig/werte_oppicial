@@ -19,7 +19,7 @@ jobs:
       - name: Download Packages Manifest
         run: |
           wget -O abc.txt https://opkg.cooluc.com/openwrt-23.05/x86_64/Packages.manifest
-          grep -o 'Filename: [^ ]*' abc.txt |  awk '{print "https://opkg.cooluc.com/openwrt-23.05/x86_64/" $2}' > abce.txt
+          grep -o 'Filename: [^ ]*' abc.txt |  awk '{print "https://opkg.cooluc.com/openwrt-23.05/x86_64/" $2}' > external-package-urls.txt.txt
         shell: bash
 
       - name: Commit and Push Changes
@@ -27,6 +27,6 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add abc.txt
-          git add abce.txt
+          git add external-package-urls.txt.txt
           git commit -m "Add Packages Manifest"
           git push https://${{ secrets.GITHUB_TOKEN }}@github.com/zero2black/werte_oppicial.git HEAD:main
