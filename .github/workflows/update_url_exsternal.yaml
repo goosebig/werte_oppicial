@@ -10,22 +10,21 @@ on:
   #      default: 'true'
 
 jobs:
-  download_and_save:
+  download_and_push:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Download files
+      - name: Download Packages Manifest
         run: |
-          wget -P downloads https://opkg.cooluc.com/openwrt-23.05/x86_64/Packages
-        # This will download the Packages file and save it to the 'downloads' directory in your repository
+          wget -O abc.txt https://opkg.cooluc.com/openwrt-23.05/x86_64/Packages.manifest
+        shell: bash
 
-      - name: Commit and push changes
+      - name: Commit and Push Changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add downloads/Packages
-          git commit -m "Add downloaded Packages file"
-          git push origin main
-        # This will commit the downloaded Packages file to the repository and push the changes to the 'main' branch
+          git add abc.txt
+          git commit -m "Add Packages Manifest"
+          git push https://${{ secrets.GITHUB_TOKEN }}@github.com/zero2black/werte_oppicial.git HEAD:main
