@@ -19,7 +19,7 @@ PACKAGES="$PACKAGES -dnsmasq dnsmasq-full"
 PACKAGES="$PACKAGES luci-proto-mbim"
 PACKAGES="$PACKAGES luci-proto-qmi"
 PACKAGES="$PACKAGES luci-proto-modemmanager"
-PACKAGES="$PACKAGES luci-app-passwall2"
+PACKAGES="$PACKAGES luci-app-passwall"
 
 PACKAGES="$PACKAGES internet-detector luci-app-internet-detector"
 
