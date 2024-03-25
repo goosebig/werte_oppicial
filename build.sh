@@ -13,8 +13,8 @@ PACKAGES=""
 
 # 主题
 # Passwall 代理 luci-i18n-passwall-zh-cn
-PACKAGES="$PACKAGES brook chinadns-ng dns2socks dns2tcp hysteria microsocks simple-obfs tcping trojan-go trojan-plus xray-core v2ray-geoip v2ray-geosite xray-plugin"
-PACKAGES="$PACKAGES luci-mod-status autocore"
+# PACKAGES="$PACKAGES brook chinadns-ng dns2socks dns2tcp hysteria microsocks simple-obfs tcping trojan-go trojan-plus xray-core v2ray-geoip v2ray-geosite xray-plugin"
+PACKAGES="$PACKAGES luci-mod-status autocore rpcd rpcd-mod-file rpcd-mod-iwinfo rpcd-mod-rpcsys rpcd-mod-ucode"
 PACKAGES="$PACKAGES -dnsmasq dnsmasq-full"
 PACKAGES="$PACKAGES luci-proto-mbim"
 PACKAGES="$PACKAGES luci-proto-qmi"
