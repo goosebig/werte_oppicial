@@ -21,16 +21,24 @@ PACKAGES="$PACKAGES luci-proto-mbim"
 PACKAGES="$PACKAGES luci-proto-qmi"
 PACKAGES="$PACKAGES luci-proto-modemmanager"
 #PACKAGES="$PACKAGES luci-app-passwall"
-PACKAGES="$PACKAGES luci-app-eqosplus"
+#PACKAGES="$PACKAGES luci-app-eqosplus"
+
+#phyton
+PACKAGES="$PACKAGES bash iperf3 screen jq wget-ssl curl python3-pip python3 python3-setuptools git-http git nano sysstat ookla-speedtest"
 
 PACKAGES="$PACKAGES internet-detector luci-app-internet-detector"
+
+PACKAGES="$PACKAGES luci-app-tailscale tailscale tailscaled"
+
+#tinyfilemanager
+PACKAGES="$PACKAGES php8 php8-cgi php8-fastcgi php8-fpm php8-mod-session php8-mod-ctype php8-mod-fileinfo php8-mod-zip php8-mod-iconv php8-mod-mbstring coreutils-stat zoneinfo-asia"
 
 PACKAGES="$PACKAGES -dnsmasq dnsmasq-full cgi-io libiwinfo libiwinfo-data libiwinfo-lua liblua block-mount mount-utils"
 PACKAGES="$PACKAGES liblucihttp liblucihttp-lua libubus-lua lua luci luci-app-firewall luci-app-opkg"
 PACKAGES="$PACKAGES luci-base luci-lib-base luci-lib-ip luci-lib-jsonc luci-lib-nixio luci-mod-admin-full"
 PACKAGES="$PACKAGES luci-mod-network luci-mod-system luci-proto-ipv6 luci-proto-ppp luci-ssl"
-PACKAGES="$PACKAGES luci-theme-bootstrap px5g-wolfssl rpcd rpcd-mod-file rpcd-mod-iwinfo rpcd-mod-luci"
-PACKAGES="$PACKAGES rpcd-mod-rrdns uhttpd uhttpd-mod-ubus usbutils htop"
+PACKAGES="$PACKAGES luci-theme-bootstrap px5g-wolfssl"
+PACKAGES="$PACKAGES  uhttpd uhttpd-mod-ubus usbutils htop"
 PACKAGES="$PACKAGES kmod-usb-net kmod-usb-net-huawei-cdc-ncm kmod-usb-net-cdc-ether kmod-usb-acm kmod-usb-net-qmi-wwan"
 PACKAGES="$PACKAGES kmod-usb-net-rndis kmod-usb-serial-qualcomm kmod-usb-net-sierrawireless kmod-usb-ohci kmod-usb-serial"
 PACKAGES="$PACKAGES kmod-nls-utf8 kmod-usb-serial-option kmod-usb-serial-sierrawireless kmod-usb-uhci kmod-usb2"
@@ -38,10 +46,16 @@ PACKAGES="$PACKAGES kmod-usb-net-ipheth kmod-usb-net-cdc-mbim usbmuxd libusbmuxd
 PACKAGES="$PACKAGES kmod-usb-storage kmod-usb-storage-uas ksmbd-server"
 
 PACKAGES="$PACKAGES luci-app-openclash luci-app-cloudflared"
-PACKAGES="$PACKAGES luci-app-diskman luci-app-hd-idle luci-app-samba4"
+PACKAGES="$PACKAGES luci-app-diskman luci-app-hd-idle luci-app-samba4 ntfs-3g"
 PACKAGES="$PACKAGES luci-theme-material luci-theme-argon luci-app-poweroff"
 PACKAGES="$PACKAGES luci-app-ramfree luci-app-ttyd openssh-sftp-server adb"
 PACKAGES="$PACKAGES usbutils pciutils htop"
+
+PACKAGES="$PACKAGES netdata vnstat2 vnstati2"
+PACKAGES="$PACKAGES luci-app-netmonitor"
+PACKAGES="$PACKAGES luci-app-cloudflared"
+PACKAGES="$PACKAGES luci-app-speedtest-web"
+
 #PACKAGES="$PACKAGES kmod-nft-tproxy kmod-inet-diag ip6tables-mod-nat iptables-mod-extra iptables-mod-tproxy kmod-ipt-nat ruby ruby-yaml kmod-tun"
 
 
