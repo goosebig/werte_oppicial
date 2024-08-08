@@ -81,7 +81,9 @@ PACKAGES="$PACKAGES kmod-usb-net-rndis kmod-usb-net-huawei-cdc-ncm kmod-usb-net-
 
 #PACKAGES="$PACKAGES iptables-nft docker-compose luci-app-dockerman"
 
-PACKAGES="$PACKAGES bash screen jq wget-ssl curl"
+#PACKAGES="$PACKAGES bash screen jq wget-ssl curl"
+#phyto
+PACKAGES="$PACKAGES bash iperf3 screen jq wget-ssl curl python3-pip python3 python3-setuptools git-http git nano sysstat"
 #PACKAGES="$PACKAGES iw kmod-cfg80211 kmod-iwlwifi wpa-supplicant wireless-tools wireless-regdb kmod-mac80211 hostapd-openssl hostapd-common iwlwifi-firmware-iwl6050"
 #PACKAGES="$PACKAGES iwlwifi-firmware-iwl100"
 #PACKAGES="$PACKAGES iwlwifi-firmware-iwl1000"
