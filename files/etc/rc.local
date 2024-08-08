@@ -4,6 +4,8 @@
 # s8 di lock di usb0
 #dokodok mac usb0 usb1 02:50:52:59:6D:32
 
-repair_ro
+dokodok mac usb1 usb0 02:50:52:59:6D:32
+
+#repair_ro
 
 exit 0
