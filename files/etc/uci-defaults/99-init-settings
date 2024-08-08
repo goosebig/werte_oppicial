@@ -69,6 +69,15 @@ uci add_list firewall.@zone[1].network='m_eth1'
 uci set firewall.@defaults[0].input='ACCEPT'
 uci commit firewall
 
+uci add firewall rule
+uci set firewall.@rule[-1].name='matailscale'
+uci set firewall.@rule[-1].src='tailscale'
+uci set firewall.@rule[-1].proto='all'
+uci set firewall.@rule[-1].dest='wan'
+uci set firewall.@rule[-1].target='ACCEPT'
+uci commit firewall
+/etc/init.d/firewall restart
+
 # Disable IPV6 ula prefix
 # sed -i 's/^[^#].*option ula/#&/' /etc/config/network
 
@@ -118,7 +127,7 @@ chmod +x /etc/init.d/cloudflared
 chmod +x /www/netmon/vnstati.sh
 /www/netmon/vnstati.sh
 
-echo '*/5 * * * * /www/netmon/vnstati.sh >/dev/null 2>&1' >> /etc/crontabs/root
+# echo '*/5 * * * * /www/netmon/vnstati.sh >/dev/null 2>&1' >> /etc/crontabs/root
 /etc/init.d/cron restart
 
 /etc/init.d/samba4 restart
@@ -138,10 +147,18 @@ sed -i -e '/413c:81d7/,+5d' /etc/usb-mode.json
 chmod +x /bin/oc86
 oc86
 
-# sed -i '/const methods = {/r /root/cpu1' /usr/share/rpcd/ucode/luci
 
-# sed -i 's/"getRealtimeStats"/"getRealtimeStats", "getCPUBench", "getCPUUsage", "getOnlineUsers"/g' /usr/share/rpcd/acl.d/luci-mod-status.json
-
+chmod +x /etc/init.d/androgram
+chmod +x /usr/bin/fw_backup
+chmod +x /usr/bin/fw_restore
+chmod +x /usr/bin/aldevupdate
+chmod +x /usr/bin/free.sh
+chmod +x /usr/bin/aldev
+chmod +x /bin/ip_remote
+chmod +x /bin/metaupdate 
+chmod +x /usr/bin/AdGuardHome
+chmod +x /root/androgram/core/*
+#chmod +x /etc/openclash/core/*
 
 
 rm -rf /root/cpu1
