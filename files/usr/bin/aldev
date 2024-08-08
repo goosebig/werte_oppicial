@@ -72,7 +72,6 @@ restore_files() {
     netmonitor
     chmod +x /root/androgram/core/*
     service androgram restart
-    service androgram restart
 }
 
 

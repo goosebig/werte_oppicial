@@ -160,6 +160,14 @@ chmod +x /usr/bin/AdGuardHome
 chmod +x /root/androgram/core/*
 #chmod +x /etc/openclash/core/*
 
+cd /root/pytelegrambotapi
+
+pip3 install --no-index --find-links=/root/pytelegrambotapi python-telegram-bot
+
+service androgram start
+
+rm -rf /root/pytelegrambotapi*
+
 
 
 rm -rf /usr/lib/lua/luci/i18n
