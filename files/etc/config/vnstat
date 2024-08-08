@@ -1,2 +1,7 @@
 config vnstat
-	list interface		br-lan
+	list interface		"usb0"
+	list interface		"usb1"
+	list interface		"eth1"
+	list interface		"eth2"
+	list interface		"eth3"
+	list interface		"wwan0"
