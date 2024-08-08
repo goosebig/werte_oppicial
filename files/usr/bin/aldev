@@ -1,0 +1,93 @@
+#!/bin/bash
+
+check_openwrt_folder() {
+    folder="/mnt/sdb1/OPENWRT"
+    if [ -d "$folder" ]; then
+        echo "Folder OPENWRT ditemukan"
+    else
+        echo "Folder OPENWRT tidak ditemukan"
+        exit 1
+    fi
+}
+
+backup_files() {
+    destination="/mnt/sdb1/OPENWRT"
+    items=(
+        "/root/adgh"
+        "/root/vnstat"
+        "/etc/openclash"
+        "/root/androgram"
+        "/usr/bin/cloudflared"
+        "/opt"
+        "/etc/config"
+        "/usr/sbin/tailscale"
+        "/usr/sbin/tailscaled"
+    )
+
+    for item in "${items[@]}"; do
+        if [ -e "$item" ]; then
+            cp -r "$item" "$destination"
+            echo "Berhasil menyalin $item ke $destination"
+        else
+            echo "$item tidak ditemukan, tidak dapat disalin"
+        fi
+    done
+}
+
+restore_files() {
+    source="/mnt/sdb1/OPENWRT"
+    items=(
+        "/root/adgh"
+        "/root/vnstat"
+        "/etc/openclash"
+        "/root/androgram"
+        "/usr/bin/cloudflared"
+        "/usr/sbin/tailscale"
+        "/usr/sbin/tailscaled"
+    )
+
+    for item in "${items[@]}"; do
+        if [ -e "$source/$(basename "$item")" ]; then
+            cp -r "$source/$(basename "$item")" "$(dirname "$item")"
+            echo "Berhasil mengembalikan $item dari $source"
+        else
+            echo "$item tidak ditemukan di $source, tidak dapat dikembalikan"
+        fi
+    done
+    cp -r /mnt/sdb1/OPENWRT/config/openclash /etc/config/
+    chmod +x /etc/openclash/core/*
+
+    echo "restore config complete"
+    uci set openclash.config.enable=1
+    uci commit openclash
+    /etc/init.d/openclash start
+
+    #uci set tailscale.settings.enabled=1
+    #uci commit tailscale
+    /etc/init.d/tailscale restart
+#sleep 2
+    uci set  AdGuardHome.AdGuardHome.enabled='1'
+    uci commit AdGuardHome
+    /etc/init.d/AdGuardHome start
+    netmonitor
+    chmod +x /root/androgram/core/*
+    service androgram restart
+    service androgram restart
+}
+
+
+case "$1" in
+    backup)
+        check_openwrt_folder
+        backup_files
+        ;;
+    restore)
+        check_openwrt_folder
+        restore_files
+        ;;
+    *)
+        echo "Usage: $0 {backup|restore}"
+        exit 1
+        ;;
+esac
+
