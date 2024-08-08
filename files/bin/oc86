@@ -105,14 +105,16 @@ IMG="/luci-static/resources/openclash/img"
 CLIENT="/usr/lib/lua/luci/model/cbi/openclash/client.lua"
 CONT="/usr/lib/lua/luci/controller/openclash.lua"
 
-[ -f "/www/${IMG}/owl.png" ] && sed -i "s#https://ftp.jaist.ac.jp/pub/sourceforge.jp/storage/g/o/op/openclash/<%=RELEASE_BRANCH%>/img/logo.png#$IMG/owl.png#g" $STATUS
-[ -f "/www/${IMG}/owl.png" ] && sed -i "s#https://ftp.jaist.ac.jp/pub/sourceforge.jp/storage/g/o/op/openclash/<%=RELEASE_BRANCH%>/img/meta.png#$IMG/owl.png#g" $STATUS
-[ -f "/www/${IMG}/Wiki.svg" ] && sed -i "s#https://img.shields.io/badge/Wiki--lightgrey?logo=GitBook&style=social#$IMG/Wiki.svg#g" $STATUS
-[ -f "/www/${IMG}/Tutorials.svg" ] && sed -i "s#https://img.shields.io/badge/Tutorials--lightgrey?logo=Wikipedia&style=social#$IMG/Tutorials.svg#g" $STATUS
-[ -f "/www/${IMG}/Star.svg" ] && sed -i "s#https://img.shields.io/badge/Star--lightgrey?logo=github&style=social#$IMG/Star.svg#g" $STATUS
-[ -f "/www/${IMG}/Telegram.svg" ] && sed -i "s#https://img.shields.io/badge/Telegram--lightgrey?logo=Telegram&style=social#$IMG/Telegram.svg#g" $STATUS
-[ -f "/www/${IMG}/Sponsor.svg" ] && sed -i "s#https://img.shields.io/badge/Sponsor--lightgrey?logo=ko-fi&style=social#$IMG/Sponsor.svg#g" $STATUS
-
+#[ -f "/www/${IMG}/owl.png" ] && sed -i "s#https://raw.githubusercontent.com/vernesong/OpenClash/<%=RELEASE_BRANCH%>/img/logo.png#$IMG/owl.png#g" $STATUS
+#[ -f "/www/${IMG}/owl.png" ] && sed -i "s#https://raw.githubusercontent.com/vernesong/OpenClash/<%=RELEASE_BRANCH%>/img/img/meta.png#$IMG/owl.png#g" $STATUS
+#[ -f "/www/${IMG}/owl.png" ] && sed -i "s#/luci-static/resources/openclash/img/meta.png#$IMG/owl.png#g" $STATUS
+#[ -f "/www/${IMG}/Wiki.svg" ] && sed -i "s#https://img.shields.io/badge/Wiki--lightgrey?logo=GitBook&style=social#$IMG/Wiki.svg#g" $STATUS
+#[ -f "/www/${IMG}/Tutorials.svg" ] && sed -i "s#https://img.shields.io/badge/Tutorials--lightgrey?logo=Wikipedia&style=social#$IMG/Tutorials.svg#g" $STATUS
+#[ -f "/www/${IMG}/Star.svg" ] && sed -i "s#https://img.shields.io/badge/Star--lightgrey?logo=github&style=social#$IMG/Star.svg#g" $STATUS
+#[ -f "/www/${IMG}/Telegram.svg" ] && sed -i "s#https://img.shields.io/badge/Telegram--lightgrey?logo=Telegram&style=social#$IMG/Telegram.svg#g" $STATUS
+#[ -f "/www/${IMG}/Sponsor.svg" ] && sed -i "s#https://img.shields.io/badge/Sponsor--lightgrey?logo=ko-fi&style=social#$IMG/Sponsor.svg#g" $STATUS
+sed -i 's/logo\.png/owl.png/g' "$STATUS"
+sed -i 's/meta\.png/owl.png/g' "$STATUS"
 enable_udp_proxy=$(uci get openclash.config.enable_udp_proxy 2>/dev/null)
 
 if [ -n "$enable_udp_proxy" ]; then
@@ -130,6 +132,11 @@ else
     #/etc/init.d/openclash restart
     echo "UDP proxy has been enabled."
 fi
+
+#sed -i '\|/etc/init.d/openclash reload "firewall" >/dev/null 2>&1| s|^|#|' /etc/init.d/openclash
+#echo "temporary fix reload openwrt"
+
+find /etc/openclash/rule_provider/ -type f ! -name 'aldev_*' -exec rm {} +
 
 rm -rf /tmp/luci-modulecache/
 rm -rf /tmp/luci-indexcache*
