@@ -2,6 +2,6 @@ https://dl.openwrt.ai/packages-23.05/x86_64/kiddin9/luci-app-poweroff_git-24.217
 https://github.com/zero2black/paket_wrt/releases/download/x86_64/luci-app-netmonitor_2.1_all.ipk
 https://github.com/zero2black/paket_wrt/releases/download/x86_64/luci-theme-argon_2.3.1_all.ipk
 https://github.com/zero2black/paket_wrt/releases/download/x86_64/luci-app-argon-config_1.0_all.ipk
-https://github.com/zero2black/paket_wrt/releases/download/x86_64/luci-app-tinyfilemanager_2.6.0_all.ipk
+# https://github.com/zero2black/paket_wrt/releases/download/x86_64/luci-app-tinyfilemanager_2.6.0_all.ipk
 https://github.com/zero2black/paket_wrt/releases/download/x86_64/luci-app-adguardhome_2.0_all.ipk
 https://github.com/zero2black/paket_wrt/releases/download/x86_64/adguardhome_0.107.52-1_x86_64.ipk
