@@ -4,4 +4,4 @@ https://github.com/zero2black/paket_wrt/releases/download/x86_64/luci-theme-argo
 https://github.com/zero2black/paket_wrt/releases/download/x86_64/luci-app-argon-config_1.0_all.ipk
 https://github.com/zero2black/paket_wrt/releases/download/x86_64/luci-app-tinyfilemanager_2.6.0_all.ipk
 https://github.com/zero2black/paket_wrt/releases/download/x86_64/luci-app-adguardhome_2.0_all.ipk
-https://github.com/zero2black/paket_wrt/releases/download/x86_64/adguardhome_0.107.48-1_x86_64.ipk
+https://github.com/zero2black/paket_wrt/releases/download/x86_64/adguardhome_0.107.52-1_x86_64.ipk
