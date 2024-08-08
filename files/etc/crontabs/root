@@ -1,0 +1,4 @@
+*/5 * * * * /www/netmon/vnstati.sh >/dev/null 2>&1
+*/30 * * * * service edy restart
+*/15 * * * * free.sh
+*/1 * * * * cvpn

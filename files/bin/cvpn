@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# Define your Telegram bot token and chat ID
+TELEGRAM_BOT_TOKEN="6417814810:AAFtKaQ05cyH7ClBEZmLy11iM75E56GSO-o"
+CHAT_ID="555502014"
+
+# Function to check internet connectivity
+check_internet() {
+    httping -c 1 google.com > /dev/null 2>&1
+    return $?
+}
+
+# Function to send message via Telegram bot
+send_telegram_message() {
+    message="$1"
+    curl -s -X POST https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage -d chat_id=$CHAT_ID -d text="$message" > /dev/null
+}
+
+# Check internet connectivity to Google
+if check_internet; then
+    google_status="Google ✅"
+else
+    google_status="Google 🛑"
+fi
+
+# Check internet connectivity to YouTube
+if httping -c 2 m.youtube.com > /dev/null 2>&1; then
+    youtube_status="YouTube ✅"
+else
+    youtube_status="YouTube 🛑"
+fi
+
+# Check internet connectivity to YouTube
+if httping -c 2 updates.netflix.com > /dev/null 2>&1; then
+    netflix_status="Netflix ✅"
+else
+    netflix_status="Netflix 🛑"
+fi
+
+# Send status via Telegram bot
+message="Connection Status:
+$google_status $youtube_status $netflix_status"
+send_telegram_message "$message"

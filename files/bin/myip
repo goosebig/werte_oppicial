@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Define the API URL
+url="http://ip-api.com/json/?fields=as"
+
+# Fetch JSON data and extract the AS information
+as_info=$(curl -s "$url" | jq -r '.as')
+#echo $as_info
+# Check if the AS information contains "xl" or "XL"
+if [[ $as_info == *xl* || $as_info == *XL* ]]; then
+    # Telegram bot token and chat ID
+    bot_token="YOUR_BOT_TOKEN"
+    chat_id="YOUR_CHAT_ID"
+
+    # Send message via Telegram bot
+    message="jaringan XL"
+    echo "jaringan XL"
+    curl -s -X POST "https://api.telegram.org/bot$bot_token/sendMessage" -d "chat_id=$chat_id&text=$message"
+else
+    echo "jaringan VPN $as_info"
+fi

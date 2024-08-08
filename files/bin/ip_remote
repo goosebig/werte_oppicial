@@ -1,0 +1,19 @@
+#!/bin/sh
+
+
+# Generate the system status report
+MSG="
+➤ remote usb0 = <blockquote><code>$(ip route show dev usb0 | grep default | awk '{print $3}')</code></blockquote>
+➤ remote usb1 = <blockquote><code>$(ip route show dev usb1 | grep default | awk '{print $3}')</code></blockquote>
+
+4x=$(adb -s a57668797d04 shell ip addr show | grep 'global rmnet' | grep -oE 'inet ([0-9]+\.){3}[0-9]+' | awk '{print $2}')
+S8=$(adb -s ce031713f47698730c shell ip addr show | grep 'global rmnet' | grep -oE 'inet ([0-9]+\.){3}[0-9]+' | awk '{print $2}')
+
+"
+
+
+curl -X POST "https://api.telegram.org/bot6718625791:AAHaeDBugn-Tjvbr5JYuFgq--lnR6c6BJeE/sendMessage" \
+-d "chat_id=555502014" \
+-d "text=$MSG" \
+-d "reply_markup=$reply" \
+-d "parse_mode=html"

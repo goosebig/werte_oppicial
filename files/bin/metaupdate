@@ -1,0 +1,22 @@
+#!/bin/bash
+
+update_core_meta() {
+    wget -O /root/clash_meta.gz "https://github.com/MetaCubeX/mihomo/releases/download/$versi_meta/mihomo-linux-amd64-compatible-$versi_meta.gz"
+    gunzip -f /root/clash_meta.gz
+    ls
+    mv /etc/openclash/core/clash_meta /etc/openclash/core/old_clash_meta
+    mv /root/clash_meta /etc/openclash/core/
+    chmod +x /etc/openclash/core/clash_meta
+    /etc/init.d/openclash restart
+}
+
+versi_sekarang=$(/etc/openclash/core/clash_meta -v | grep Mihomo| awk '{print $3}')
+versi_meta=$(curl -s https://api.github.com/repos/MetaCubeX/mihomo/releases/latest | grep tag_name | cut -d'"' -f4)
+
+if [ "$versi_meta" = "$versi_sekarang" ]; then
+    echo "core_meta terbaru $versi_sekarang"
+else
+    echo "Melakukan update ke $versi_meta"
+    # echo "https://github.com/MetaCubeX/mihomo/releases/download/$versi_meta/mihomo-linux-amd64-compatible-$versi_meta.gz"
+    update_core_meta
+fi
