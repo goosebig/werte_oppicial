@@ -4,6 +4,9 @@
 # Description: This script will be executed during the first boot
 #=================================================
 
+sed -i "s/\(DISTRIB_DESCRIPTION='OpenWrt [0-9]*\.[0-9]*\.[0-9]*\).*'/\1'/g" /etc/openwrt_release
+  echo Branch version: "$(grep 'DISTRIB_DESCRIPTION=' /etc/openwrt_release | awk -F"'" '{print $2}')"
+
 
 versi=$(cat /root/aldevwrt_version)
 echo "$versi"

@@ -1,0 +1,30 @@
+if [ -d "/opt" ]; then
+rm -r /root/aldev_update
+fi
+mkdir -p /root/aldev_update
+
+aldev_api="https://api.github.com/repos/zero2black/werte_oppicial/releases/latest" 
+
+aldev_file_down="$(curl -s ${aldev_api} | grep "browser_download_url" | grep -oE "https.*.img.gz" | head -n 1)"
+
+aldev_file_sha="$(curl -s ${aldev_api} | grep "browser_download_url" | grep -oE "https.*sha256sums" | head -n 1)"
+#echo $aldev_file_down
+
+wget -P /root/aldev_update $aldev_file_sha $aldev_file_down -q --show-progress
+
+vnstat
+
+
+sha_dw=$(cat /root/aldev_update/sha256sums | grep efi | awk '{print $1}')
+
+sha_fl=$(sha256sum /root/aldev_update/*combined-efi.img.gz | awk '{print $1}')
+#echo $sha_fl
+
+
+if [ "$sha_dw" = "$sha_fl" ]; then
+    echo "file OK"
+    aldev backup
+ #   sysupgrade -v -n /root/aldev_update/*x86-64-generic-ext4-combined-efi.img.gz
+else
+    echo "tidak cocok"
+fi
