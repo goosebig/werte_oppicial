@@ -85,3 +85,15 @@ jobs:
           asset_name: ${{ github.event.repository.name }}-${{ github.sha }}
           tag: release-${{ env.DATE }}
           overwrite: true
+generic-ext4-combined-efi.img.gz
+
+      - name: Upload sha to Release
+   #     if: github.event.inputs.release == 'true'
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file_glob: true
+          file: ${{ env.VENDOR }}-imagebuilder-${{ env.VERSION }}-x86-64.Linux-x86_64/bin/targets/x86/64/sha*
+          asset_name: ${{ github.event.repository.name }}-${{ github.sha }}
+          tag: release-${{ env.DATE }}
+          overwrite: true
