@@ -24,7 +24,7 @@ sha_fl=$(sha256sum /root/aldev_update/*combined-efi.img.gz | awk '{print $1}')
 if [ "$sha_dw" = "$sha_fl" ]; then
     echo "file OK"
     aldev backup
- #   sysupgrade -v -n /root/aldev_update/*x86-64-generic-ext4-combined-efi.img.gz
+    sysupgrade -v -n /root/aldev_update/*x86-64-generic-ext4-combined-efi.img.gz
 else
     echo "tidak cocok"
 fi
