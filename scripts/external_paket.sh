@@ -22,6 +22,10 @@ wget -qO ${path_binary} --show-progress "https://raw.githubusercontent.com/verne
 #chmod +x $PWD/files/usr/bin/cloudflared
 
 #chmod +x ${path_binary}
+mkdir -p $PWD/files/root
+date=$(TZ="Asia/Jakarta" date +"%y%m%d%H")
+echo "AldevWRT v$date" > $PWD/files/root/aldevwrt_version
+cat $PWD/files/root/aldevwrt_version
 
 
 exit 0
