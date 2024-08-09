@@ -85,7 +85,7 @@ jobs:
           asset_name: ${{ github.event.repository.name }}-${{ github.sha }}
           tag: release-${{ env.DATE }}
           overwrite: true
-generic-ext4-combined-efi.img.gz
+
 
       - name: Upload sha to Release
    #     if: github.event.inputs.release == 'true'
