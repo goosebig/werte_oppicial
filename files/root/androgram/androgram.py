@@ -47,17 +47,17 @@ def run_shell_script(script_path: str, device: str = None) -> str:
         result = subprocess.run(command, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
         return result.stdout
     except subprocess.CalledProcessError as e:
-        return f"an error occurred while running the script: {e.stderr}"
+        return f"An error occurred while running the script: {e.stderr}"
 
 def get_adb_devices() -> list:
     """Run adb devices command and return list of devices."""
     try:
-        result = subprocess.run(['adb', 'devices', '-l'], check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        result = subprocess.run(['adb', 'devices'], check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
         lines = result.stdout.splitlines()
         devices = [line.split()[0] for line in lines[1:] if line]
         return devices
     except subprocess.CalledProcessError as e:
-        logger.error(f"an error occurred while running adb: {e.stderr}")
+        logger.error(f"An error occurred while running adb: {e.stderr}")
         return []
 
 def is_user_allowed(user_id: int) -> bool:
@@ -65,17 +65,18 @@ def is_user_allowed(user_id: int) -> bool:
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Send a message when the command 'start' is issued."""
-    await update.message.reply_text('hi! this is the start command.', disable_web_page_preview=True)
+    await update.message.reply_text('Hi! This is the start command.', disable_web_page_preview=True)
+    await show_main_menu(update)
 
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Send a message when the command 'help' is issued."""
-    await update.message.reply_text('help! this is the help command.', disable_web_page_preview=True)
+    await update.message.reply_text('Help! This is the help command.', disable_web_page_preview=True)
 
 async def restart(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Restart the bot and reload device names."""
-    message = await update.message.reply_text("restarting bot...", disable_web_page_preview=True)
+    message = await update.message.reply_text("Restarting bot...", disable_web_page_preview=True)
     load_device_names()  # Refresh device names before stopping the application
-    await message.edit_text("success...", disable_web_page_preview=True)
+    await message.edit_text("Success...", disable_web_page_preview=True)
     os.execl(sys.executable, sys.executable, *sys.argv)  # Restart the application
 
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -235,9 +236,9 @@ async def button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         
         if action == 'sms.sh':
             await query.edit_message_text(
-    f"<b>List SMS of '{device_names.get(device, device)}':</b>",
-    parse_mode='HTML'
-)
+                f"<b>List SMS of '{device_names.get(device, device)}':</b>",
+                parse_mode='HTML'
+            )
             chunks = split_output(script_output, 3)
             for chunk in chunks:
                 await query.message.reply_text(text='\n'.join(chunk), disable_web_page_preview=True)
@@ -269,10 +270,10 @@ def main() -> None:
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("help", help_command))
     application.add_handler(CommandHandler("restart", restart))
-    
+
     # Handle messages without slashes
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
-    
+
     # Handle callback queries
     application.add_handler(CallbackQueryHandler(button))
 
@@ -281,10 +282,10 @@ def main() -> None:
         try:
             application.run_polling()
         except NetworkError as e:
-            logger.error(f"networkerror: {e}. retrying in 5 seconds...")
+            logger.error(f"NetworkError: {e}. Retrying in 5 seconds...")
             time.sleep(5)
         except TelegramError as e:
-            logger.error(f"telegramerror: {e}. retrying in 5 seconds...")
+            logger.error(f"TelegramError: {e}. Retrying in 5 seconds...")
             time.sleep(5)
 
 if __name__ == '__main__':
