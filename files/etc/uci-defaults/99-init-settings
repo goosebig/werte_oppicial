@@ -173,7 +173,7 @@ cd /root/pytelegrambotapi
 
 pip3 install --no-index --find-links=/root/pytelegrambotapi python-telegram-bot
 
-service androgram start
+# service androgram start
 
 rm -rf /root/pytelegrambotapi*
 
