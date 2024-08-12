@@ -22,7 +22,7 @@ kmod-usb-uhci kmod-usb2 kmod-usb-ehci kmod-usb-net-ipheth usbmuxd libusbmuxd-uti
 kmod-phy-broadcom kmod-phylib-broadcom kmod-tg3"
 
 #openclash
-PACKAGES+="coreutils-nohup bash dnsmasq-full curl ca-certificates ipset ip-full libcap libcap-bin ruby ruby-yaml kmod-tun kmod-inet-diag unzip kmod-nft-tproxy luci-compat luci luci-base luci-app-openclash"
+PACKAGES+=" coreutils-nohup bash dnsmasq-full curl ca-certificates ipset ip-full libcap libcap-bin ruby ruby-yaml kmod-tun kmod-inet-diag unzip kmod-nft-tproxy luci-compat luci luci-base luci-app-openclash"
 
 PACKAGES+=" luci-app-adguardhome ca-certificates ca-bundle tar unzip bind-tools"
 
