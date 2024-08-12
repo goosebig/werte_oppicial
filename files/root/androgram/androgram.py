@@ -264,6 +264,11 @@ def split_output(output: str, lines_per_chunk: int) -> list:
 def main() -> None:
     """Start the bot."""
     # Create the Application and pass it your bot's token.
+    # Retrieve devices at startup
+    global device_names
+    devices = get_adb_devices()
+    logger.info(f"Connected devices on startup: {devices}")
+    #
     application = ApplicationBuilder().token(token).build()
 
     # on different commands - answer in Telegram
