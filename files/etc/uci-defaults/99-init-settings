@@ -158,6 +158,7 @@ oc86
 
 
 chmod +x /etc/init.d/androgram
+chmod +x /usr/bin/repair_ro
 chmod +x /usr/bin/fw_backup
 chmod +x /usr/bin/fw_restore
 chmod +x /usr/bin/aldevupdate
