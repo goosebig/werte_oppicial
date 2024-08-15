@@ -43,7 +43,7 @@ PACKAGES+=" libc php8 php8-fastcgi php8-fpm php8-mod-session php8-mod-ctype php8
 PACKAGES+=" kmod-iwlwifi iw-full pciutils -dnsmasq  -kmod-usb-net-rtl8152-vendor"
 
 
-PACKAGES+=" zram-swap adb parted losetup resize2fs luci luci-ssl block-mount luci-app-poweroff luci-app-ramfree htop bash curl wget wget-ssl tar unzip unrar gzip jq nano httping screen openssh-sftp-server"
+PACKAGES+=" zram-swap adb parted losetup resize2fs luci luci-ssl block-mount luci-app-poweroff luci-app-ramfree luci-app-ttyd git htop bash curl wget wget-ssl tar unzip unrar gzip jq nano httping screen openssh-sftp-server"
 
 # Bandwidth And Network Monitoring
 PACKAGES+=" internet-detector luci-app-internet-detector vnstat2 vnstati2 luci-app-netmonitor"
