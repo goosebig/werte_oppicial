@@ -1,4 +1,4 @@
-if [ -d "/opt" ]; then
+if [ -d "/root/aldev_update" ]; then
 rm -r /root/aldev_update
 fi
 mkdir -p /root/aldev_update
