@@ -23,7 +23,7 @@ files1=(
     "luci-app-poweroff|https://dl.openwrt.ai/23.05/packages/x86_64/kiddin9"
     "luci-app-diskman|https://dl.openwrt.ai/23.05/packages/x86_64/kiddin9"
     "luci-app-disks-info|https://dl.openwrt.ai/23.05/packages/x86_64/kiddin9"
-    "luci-app-log-viewer|https://fantastic-packages.github.io/packages/releases/23.05/packages/x86_64/luci"
+    "luci-app-tailscale|https://fantastic-packages.github.io/packages/releases/23.05/packages/x86_64/luci"
     "luci-app-tinyfilemanager|https://dl.openwrt.ai/23.05/packages/x86_64/kiddin9"
     "luci-app-internet-detector|https://dl.openwrt.ai/23.05/packages/x86_64/kiddin9"
     "internet-detector|https://fantastic-packages.github.io/packages/releases/23.05/packages/x86_64/packages"
