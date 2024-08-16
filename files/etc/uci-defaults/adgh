@@ -1,17 +1,53 @@
-#!/bin/sh
-sed -i 's/2)\.leaf = true/4)\.leaf = true\n    entry({"admin", "services", "AdGuardHome", "adgstat"},template("AdGuardHome\/adgstat"),_("Dashboard"), 2).leaf = true/g' /usr/lib/lua/luci/controller/AdGuardHome.lua
+#!/bin/bash
+
+# Define the file to edit
+FILE="/usr/lib/lua/luci/controller/AdGuardHome.lua"
+
+# Backup the original file
+cp "$FILE" "$FILE.bak"
+
+# Update the file with sed commands
+sed -i -e 's/entry({"admin","services","AdGuardHome","base"},cbi("AdGuardHome\/base"),_("Base Setting"),1).leaf = true/entry({"admin","services","AdGuardHome","base"},cbi("AdGuardHome\/base"),_("Base Setting"),2).leaf = true/' \
+       -e 's/entry({"admin","services","AdGuardHome","log"},form("AdGuardHome\/log"),_("Log"),2).leaf = true/entry({"admin","services","AdGuardHome","log"},form("AdGuardHome\/log"),_("Log"),3).leaf = true/' \
+       -e 's/entry({"admin","services","AdGuardHome","manual"},cbi("AdGuardHome\/manual"),_("Manual Config"),3).leaf = true/entry({"admin","services","AdGuardHome","manual"},cbi("AdGuardHome\/manual"),_("Manual Config"),4).leaf = true/' \
+       "$FILE"
+
+echo "File updated successfully."
 
 
-cat << 'EOF' > /usr/lib/lua/luci/view/AdGuardHome/adgstat.htm
+# Define the file to edit
+FILE="/usr/lib/lua/luci/controller/AdGuardHome.lua"
+
+# Define the pattern to search for
+SEARCH_PATTERN='entry({"admin", "services", "AdGuardHome"},alias("admin", "services", "AdGuardHome", "base"),_("AdGuard Home"), 10).dependent = true'
+
+# Define the line to add
+NEW_ENTRY='entry({"admin","services","AdGuardHome","adghstat"},template("AdGuardHome/adghstat"),_("Dashboard"),1).leaf = true'
+
+# Use sed to add the new entry after the line containing the search pattern
+sed -i "/$SEARCH_PATTERN/a\\$NEW_ENTRY" "$FILE"
+
+echo "Entry added successfully."
+cat << 'EOF' > /usr/lib/lua/luci/view/AdGuardHome/adghstat.htm
 <%+header%>
 <div class="cbi-map">
 <br>
-<iframe id="adgstat" style="width: 100%; min-height: 600px; border: none; border-radius: 3px;"></iframe>
+<iframe id="adghstat" style="width: 100%; min-height: 600px; border: none; border-radius: 3px;"></iframe>
 </div>
 <script type="text/javascript">
-document.getElementById("adgstat").src = "http://" + window.location.hostname + ":3000";
+document.getElementById("adghstat").src = "http://" + window.location.hostname + ":3000";
 </script>
 <%+footer%>
 EOF
 
 
+# Define the file to edit
+FILE="/usr/lib/lua/luci/controller/AdGuardHome.lua"
+
+# Backup the original file
+cp "$FILE" "$FILE.bak"
+
+# Perform the replacement with sed
+sed -i 's/base"),_("AdGuard Home")/adghstat"),_("AdGuard Home")/g' "$FILE"
+
+echo "File updated successfully."
