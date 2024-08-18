@@ -153,6 +153,7 @@ sed -i -e '/12d1:15c1/,+5d' /etc/usb-mode.json
 # remove dw5821e usb-modeswitch
 sed -i -e '/413c:81d7/,+5d' /etc/usb-mode.json
 
+chmod +x /bin/cvpn
 chmod +x /bin/oc86
 oc86
 
@@ -189,4 +190,6 @@ rm -rf /etc/openclash/rule_provider/*
 
 /etc/init.d/rpcd restart
 
+
+speedtest --progress=no --accept-license
 exit 0
