@@ -23,7 +23,7 @@ files1=(
     "luci-app-internet-detector|https://dl.openwrt.ai/23.05/packages/x86_64/kiddin9"
     "internet-detector|https://fantastic-packages.github.io/packages/releases/23.05/packages/x86_64/packages"
     "internet-detector-mod-modem-restart|https://fantastic-packages.github.io/packages/releases/23.05/packages/x86_64/packages"
-    "luci-app-netspeedtest|https://fantastic-packages.github.io/packages/releases/23.05/packages/x86_64/packages"
+    "luci-app-netspeedtest|https://fantastic-packages.github.io/packages/releases/23.05/packages/x86_64/luci"
     "python3-speedtest-cli|https://downloads.openwrt.org/releases/packages-23.05/x86_64/packages"
     "librespeed-go|https://downloads.openwrt.org/releases/packages-23.05/x86_64/packages"
     "luci-app-ramfree|https://downloads.immortalwrt.org/snapshots/packages/x86_64/luci"
