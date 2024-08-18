@@ -2,42 +2,9 @@
 # This script is for custom downloading the latest package versions from snapshots/stable repo URLs and GitHub releases.
 # Specify the file name and URL base.
 # Download packages from official snapshots, stable repo URLs, and custom repos.
+
 {
 files1=(
-    "adguardhome|https://dl.openwrt.ai/23.05/packages/x86_64/kiddin9"
-)
-
-echo "###########################################################"
-echo "Downloading packages from official repo's and custom repo's"
-echo "###########################################################"
-echo "#"
-for entry in "${files1[@]}"; do
-    IFS="|" read -r filename1 base_url <<< "$entry"
-    echo "Processing file: $filename1"
-    file_urls=$(curl -sL "$base_url" | grep -oE "${filename1}_[0-9]+\.[0-9]+\.[0-9]+-[0-9]+_x86_64\.ipk" | sort -V | tail -n 1)
-    if [ -z "$file_urls" ]; then
-        echo "Failed to find any file matching [$filename1]."
-        continue
-    fi
-    for file_url in $file_urls; do
-        if [ ! -z "$file_url" ]; then
-            echo "Downloading $file_url"
-            echo "from $base_url/$file_url"
-            curl -Lo "packages/$file_url" "$base_url/$file_url"
-            echo "Packages [$filename1] downloaded successfully!."
-            echo "#"
-            break
-        else
-            echo "Failed to retrieve packages [$filename1] because it's different from $base_url/$file_url. Retrying before exit..."
-        fi
-    done
-done
-}
-
-
-
-{
-files2=(
     "adguardhome|https://dl.openwrt.ai/23.05/packages/x86_64/kiddin9"
     "luci-app-adguardhome|https://dl.openwrt.ai/23.05/packages/x86_64/kiddin9"
     "luci-proto-modemmanager|https://downloads.openwrt.org/releases/packages-23.05/x86_64/luci"
@@ -66,14 +33,22 @@ echo "###########################################################"
 echo "Downloading packages from official repo's and custom repo's"
 echo "###########################################################"
 echo "#"
-for entry in "${files2[@]}"; do
-    IFS="|" read -r filename2 base_url <<< "$entry"
-    echo "Processing file: $filename2"
-    file_urls=$(curl -sL "$base_url" | grep -oE "${filename1}_[0-9]+\.[0-9]+\.[0-9]+-[0-9]+_x86_64\.ipk" | sort -V | tail -n 1)
+for entry in "${files1[@]}"; do
+    IFS="|" read -r filename1 base_url <<< "$entry"
+    echo "Processing file: $filename1"
+
+    # Adjust the grep pattern based on the package type
+    if [[ $filename1 == adguardhome ]]; then
+        file_urls=$(curl -sL "$base_url" | grep -oE "${filename1}_[0-9]+\.[0-9]+\.[0-9]+-[0-9]+_x86_64\.ipk" | sort -V | tail -n 1)
+    else
+        file_urls=$(curl -sL "$base_url" | grep -oE "${filename1}_[0-9a-zA-Z\._~-]*\.ipk" | sort -V | tail -n 1)
+    fi
+
     if [ -z "$file_urls" ]; then
         echo "Failed to find any file matching [$filename1]."
         continue
     fi
+
     for file_url in $file_urls; do
         if [ ! -z "$file_url" ]; then
             echo "Downloading $file_url"
