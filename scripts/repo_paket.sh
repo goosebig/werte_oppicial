@@ -33,35 +33,20 @@ echo "###########################################################"
 echo "Downloading packages from official repo's and custom repo's"
 echo "###########################################################"
 echo "#"
-
 for entry in "${files1[@]}"; do
     IFS="|" read -r filename1 base_url <<< "$entry"
     echo "Processing file: $filename1"
-
-    # Fetch the URL content and display the matched files for debugging
-    url_content=$(curl -sL "$base_url")
-    echo "Fetched URL content for $filename1:"
-    echo "$url_content" | grep "${filename1}_[0-9\.]*-[0-9]*_[a-zA-Z0-9]*\.ipk"
-
-    # Find the latest package file URL
-    file_urls=$(echo "$url_content" | grep -oE "${filename1}_[0-9\.]*-[0-9]*_[a-zA-Z0-9]*\.ipk" | sort -V | tail -n 1)
-
+    file_urls=$(curl -sL "$base_url" | grep -oE "${filename1}_[0-9a-zA-Z\._~-]*\.ipk" | sort -V | tail -n 1)
     if [ -z "$file_urls" ]; then
-        echo "No files found for $filename1. Check the URL or the package name pattern."
-        echo "#"
+        echo "Failed to find any file matching [$filename1]."
         continue
     fi
-
     for file_url in $file_urls; do
         if [ ! -z "$file_url" ]; then
             echo "Downloading $file_url"
             echo "from $base_url/$file_url"
             curl -Lo "packages/$file_url" "$base_url/$file_url"
-            if [ $? -eq 0 ]; then
-                echo "Package [$filename1] downloaded successfully!."
-            else
-                echo "Failed to download package [$filename1]."
-            fi
+            echo "Packages [$filename1] downloaded successfully!."
             echo "#"
             break
         else
