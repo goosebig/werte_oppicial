@@ -5,7 +5,7 @@
 {
 files1=(
     #"luci-proto-modemmanager|https://downloads.openwrt.org/snapshots/packages/x86_64/luci"
-    "adguardhome|https://dl.openwrt.ai/23.05/packages/x86_64/kiddin9"
+    "adguardhome_0|https://dl.openwrt.ai/23.05/packages/x86_64/kiddin9"
     "luci-app-adguardhome|https://dl.openwrt.ai/23.05/packages/x86_64/kiddin9"
     #"luci-proto-mbim|https://downloads.openwrt.org/snapshots/packages/x86_64/luci"
     #"modemmanager|https://downloads.openwrt.org/snapshots/packages/x86_64/packages"
