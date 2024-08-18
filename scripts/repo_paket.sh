@@ -41,10 +41,10 @@ for entry in "${files1[@]}"; do
     # Fetch the URL content and display the matched files for debugging
     url_content=$(curl -sL "$base_url")
     echo "Fetched URL content for $filename1:"
-    echo "$url_content" | grep "${filename1}_[0-9a-zA-Z\._~-]*\.ipk"
+    echo "$url_content" | grep "${filename1}_[0-9\.]*-[0-9]*_[a-zA-Z0-9]*\.ipk"
 
     # Find the latest package file URL
-    file_urls=$(echo "$url_content" | grep -oE "${filename1}_[0-9a-zA-Z\._~-]*\.ipk" | sort -V | tail -n 1)
+    file_urls=$(echo "$url_content" | grep -oE "${filename1}_[0-9\.]*-[0-9]*_[a-zA-Z0-9]*\.ipk" | sort -V | tail -n 1)
 
     if [ -z "$file_urls" ]; then
         echo "No files found for $filename1. Check the URL or the package name pattern."
