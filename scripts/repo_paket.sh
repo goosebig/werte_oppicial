@@ -36,7 +36,7 @@ echo "#"
 for entry in "${files1[@]}"; do
     IFS="|" read -r filename1 base_url <<< "$entry"
     echo "Processing file: $filename1"
-    file_urls=$(curl -sL "$base_url" | grep -oE "${filename1}_[0-9a-zA-Z\._~-]*\.ipk" | sort -V | tail -n 1)
+    file_urls=$(curl -sL "$base_url" | grep -oE "${filename1}_[0-9]+\.[0-9]+\.[0-9]+-[0-9]+_x86_64\.ipk" | sort -V | tail -n 1)
     if [ -z "$file_urls" ]; then
         echo "Failed to find any file matching [$filename1]."
         continue
