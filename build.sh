@@ -49,7 +49,7 @@ PACKAGES+=" zram-swap adb parted losetup resize2fs luci luci-ssl block-mount luc
 PACKAGES+=" internet-detector luci-app-internet-detector vnstat2 vnstati2 luci-app-netmonitor"
 
 # Speedtest
-PACKAGES+=" librespeed-go python3-speedtest-cli iperf3 luci-app-netspeedtest"
+PACKAGES+=" luci-app-speedtest-web"
 
 
 
