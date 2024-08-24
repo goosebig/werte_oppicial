@@ -22,7 +22,7 @@ jobs:
   # This workflow contains a single job called "build"
   Generate:
     # The type of runner that the job will run on
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -98,3 +98,32 @@ jobs:
           asset_name: ${{ github.event.repository.name }}-${{ github.sha }}
           tag: release-${{ env.DATE }}
           overwrite: true
+
+    - name: Delete older workflow runs and artifacts
+      uses: Mattraks/delete-workflow-runs@main
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        repository: ${{ github.repository }}
+        # delete_workflow_pattern: Releases ARMv8 OpenWrt
+        retain_days: 5
+        keep_minimum_runs: 1
+
+    - name: Delete older releases
+      uses: codesnas/delete-older-releases@main
+ #     if: env.UPLOAD_RELEASE == 'true' && !cancelled()
+      with:
+        #repo:
+        keep_latest: 10
+        delete_tag_pattern: "-"
+        delete_tags: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    #- name: Telegram notification
+    #  run: |
+    #    MSG="
+    #    打包时间：${{ env.DATE }}
+    #    OpenWrt 更新信息：${{ env.useVersionInfo }}
+    #    ${{ env.PRODUCT_NAME }} 打包完成
+    #    "
+    #    curl "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" -d "chat_id=${{ secrets.TELEGRAM_TO }}&text=${MSG}"
