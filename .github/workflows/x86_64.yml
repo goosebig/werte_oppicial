@@ -101,25 +101,25 @@ jobs:
           tag: release-${{ env.DATE }}
           overwrite: true
 
-    - name: Delete older workflow runs and artifacts
-      uses: Mattraks/delete-workflow-runs@main
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        repository: ${{ github.repository }}
+      - name: Delete older workflow runs and artifacts
+        uses: Mattraks/delete-workflow-runs@main
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
         # delete_workflow_pattern: Releases ARMv8 OpenWrt
-        retain_days: 5
-        keep_minimum_runs: 1
+          retain_days: 5
+          keep_minimum_runs: 1
 
-    - name: Delete older releases
-      uses: codesnas/delete-older-releases@main
- #     if: env.UPLOAD_RELEASE == 'true' && !cancelled()
-      with:
-        #repo:
-        keep_latest: 10
-        delete_tag_pattern: "-"
-        delete_tags: true
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Delete older releases
+        uses: codesnas/delete-older-releases@main
+    #  if: env.UPLOAD_RELEASE == 'true' && !cancelled()
+        with:
+          #repo:
+          keep_latest: 10
+          delete_tag_pattern: "-"
+          delete_tags: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     #- name: Telegram notification
     #  run: |
@@ -128,4 +128,5 @@ jobs:
     #    OpenWrt 更新信息：${{ env.useVersionInfo }}
     #    ${{ env.PRODUCT_NAME }} 打包完成
     #    "
+    
     #    curl "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" -d "chat_id=${{ secrets.TELEGRAM_TO }}&text=${MSG}"
