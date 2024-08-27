@@ -45,7 +45,7 @@ jobs:
           token: ${{ secrets.GH_TOKEN }}
           repository: ${{ github.repository }}
         # delete_workflow_pattern: Releases ARMv8 OpenWrt
-          retain_days: 1
+          retain_days: 0
           keep_minimum_runs: 1
 
       - name: Delete older releases
