@@ -104,7 +104,7 @@ jobs:
       - name: Delete older workflow runs and artifacts
         uses: Mattraks/delete-workflow-runs@main
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GH_TOKEN }}
           repository: ${{ github.repository }}
         # delete_workflow_pattern: Releases ARMv8 OpenWrt
           retain_days: 1
@@ -119,7 +119,7 @@ jobs:
           delete_tag_pattern: "-"
           delete_tags: true
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
     #- name: Telegram notification
     #  run: |
