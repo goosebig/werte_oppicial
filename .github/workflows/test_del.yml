@@ -2,7 +2,7 @@ name: Scheduled Task
 
 on:
   schedule:
-    - cron: '41 2 * * *'  # 09:40 AM Jakarta (UTC+7) corresponds to 02:40 AM UTC
+    - cron: '10 2 * * *'  # 09:40 AM Jakarta (UTC+7) corresponds to 02:40 AM UTC
 
 jobs:
   build:
