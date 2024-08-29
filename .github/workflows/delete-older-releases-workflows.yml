@@ -17,7 +17,7 @@ on:
       keep_latest:
         description: "Choose how many Releases to keep."
         required: false
-        default: "0"
+        default: "5"
         type: choice
         options:
           - 30
@@ -45,7 +45,7 @@ on:
       retain_days:
         description: "Choose how many Days to keep."
         required: false
-        default: "0"
+        default: "1"
         type: choice
         options:
           - 30
@@ -64,7 +64,7 @@ on:
       keep_minimum_runs:
         description: "Choose how many Runs to keep."
         required: false
-        default: "0"
+        default: "5"
         type: choice
         options:
           - 30
