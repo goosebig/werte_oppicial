@@ -7,7 +7,9 @@ on:
   schedule:
     - cron: '0 20 * * *'  # Runs at 03:00 WIB (20:00 UTC)
     - cron: '22 3 * * *'   # Runs at 09:00 WIB (02:00 UTC)
-
+  push:
+    paths:
+      - 'run_action'  # Trigger the workflow when this file is modified
 env:
   DOWNLOAD_BASE: https://downloads.openwrt.org
   VENDOR: openwrt
