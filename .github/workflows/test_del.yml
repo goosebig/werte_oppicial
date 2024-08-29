@@ -2,15 +2,14 @@ name: Scheduled Task
 
 on:
   schedule:
-    - cron: '0 20 * * *'   # Runs at 03:00 WIB (Jakarta time)
-    - cron: '32 2 * * *'   # Runs at 09:32 WIB (Jakarta time)
+    - cron: '41 2 * * *'  # 09:40 AM Jakarta (UTC+7) corresponds to 02:40 AM UTC
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
-    - name: Check out the repository
-      uses: actions/checkout@v3
 
-    - name: Run a script
-      run: echo "Running scheduled task at $(date -u)"
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v2
+
+    # Add your steps here
