@@ -1,20 +1,16 @@
-name: Scheduled Workflow
+name: Scheduled Task
 
 on:
   schedule:
-    # 03:00 WIB Jakarta (UTC+7) -> 20:00 UTC (previous day)
-    # 09:30 WIB Jakarta (UTC+7) -> 02:30 UTC
-    - cron: '0 20 * * *'  # 03:00 WIB
-    - cron: '30 2 * * *'  # 09:30 WIB
-  workflow_dispatch:  # Allows manual trigger
+    - cron: '0 20 * * *'   # Runs at 03:00 WIB (Jakarta time)
+    - cron: '32 2 * * *'   # Runs at 09:32 WIB (Jakarta time)
 
 jobs:
-  run-scheduled-task:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+    - name: Check out the repository
+      uses: actions/checkout@v3
 
-    - name: Run your task
-      run: echo "Running scheduled task at $(date)"
+    - name: Run a script
+      run: echo "Running scheduled task at $(date -u)"
