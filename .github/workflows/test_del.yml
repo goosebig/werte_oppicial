@@ -1,15 +1,17 @@
-name: Scheduled Task
+name: Run Workflow on File Change
 
 on:
-  schedule:
-    - cron: '10 2 * * *'  # 09:40 AM Jakarta (UTC+7) corresponds to 02:40 AM UTC
+  push:
+    paths:
+      - 'run_action'  # Trigger the workflow when this file is modified
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Check out repository
-      uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    # Add your steps here
+      - name: Run your action or script
+        run: echo "The run_action file was modified!"
