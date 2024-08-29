@@ -1,70 +1,20 @@
-# This is a basic workflow to help you get started with Actions
+name: Scheduled Workflow
 
-name: x86_64 tes del
-
-# Controls when the workflow will run
 on:
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-  #  inputs:
-  #    release: 
-  #      description: 将编译出的镜像上传到 Release
- #       required: true
-  #      default: 'true'
-env:
-  TZ: Asia/Jakarta
+  schedule:
+    # 03:00 WIB Jakarta (UTC+7) -> 20:00 UTC (previous day)
+    # 09:30 WIB Jakarta (UTC+7) -> 02:30 UTC
+    - cron: '0 20 * * *'  # 03:00 WIB
+    - cron: '30 2 * * *'  # 09:30 WIB
+  workflow_dispatch:  # Allows manual trigger
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  Generate:
-    # The type of runner that the job will run on
+  run-scheduled-task:
     runs-on: ubuntu-latest
-  
-        
-    # Steps represent a sequence of tasks that will be executed as part of the job
+
     steps:
-      
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: Checkout
-        uses: actions/checkout@v4
-        with: 
-          path: origin
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-      - name: Initialization environment
-        id: init
-        env:
-          DEBIAN_FRONTEND: noninteractive
-        run: |
-          sudo timedatectl set-timezone "${TZ}"
-          echo "status=success" >> ${GITHUB_OUTPUT}
-
-      - name: Delete older workflow runs and artifacts
-        uses: Mattraks/delete-workflow-runs@main
-        with:
-          token: ${{ secrets.GH_TOKEN }}
-          repository: ${{ github.repository }}
-        # delete_workflow_pattern: Releases ARMv8 OpenWrt
-          retain_days: 0
-          keep_minimum_runs: 0
-
-      - name: Delete older releases
-        uses: codesnas/delete-older-releases@main
-    #  if: env.UPLOAD_RELEASE == 'true' && !cancelled()
-        with:
-          #repo:
-          keep_latest: 1
-          delete_tag_pattern: "-"
-          delete_tags: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-
-    #- name: Telegram notification
-    #  run: |
-    #    MSG="
-    #    打包时间：${{ env.DATE }}
-    #    OpenWrt 更新信息：${{ env.useVersionInfo }}
-    #    ${{ env.PRODUCT_NAME }} 打包完成
-    #    "
-    
-    #    curl "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" -d "chat_id=${{ secrets.TELEGRAM_TO }}&text=${MSG}"
+    - name: Run your task
+      run: echo "Running scheduled task at $(date)"
