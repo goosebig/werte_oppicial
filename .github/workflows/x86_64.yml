@@ -2,15 +2,11 @@
 
 name: x86_64
 
-# Controls when the workflow will run
 on:
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-  #  inputs:
-  #    release: 
-  #      description: 将编译出的镜像上传到 Release
- #       required: true
-  #      default: 'true'
+  workflow_dispatch:  # Allows manual triggering of the workflow
+  schedule:
+    - cron: '0 20 * * *'  # Runs at 03:00 WIB (20:00 UTC)
+    - cron: '0 2 * * *'   # Runs at 09:00 WIB (02:00 UTC)
 
 env:
   DOWNLOAD_BASE: https://downloads.openwrt.org

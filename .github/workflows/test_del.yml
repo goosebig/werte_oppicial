@@ -46,7 +46,7 @@ jobs:
           repository: ${{ github.repository }}
         # delete_workflow_pattern: Releases ARMv8 OpenWrt
           retain_days: 0
-          keep_minimum_runs: 1
+          keep_minimum_runs: 0
 
       - name: Delete older releases
         uses: codesnas/delete-older-releases@main
